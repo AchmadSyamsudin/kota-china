@@ -24,3 +24,16 @@ graf_kota_china = {
     'Hefei': ['Nanjing', 'Wuhan'],
     'Shanghai': ['Nanjing', 'Hangzhou']
 }
+tempat_awal = input('Masukkan Kota Asal: ')
+tempat_akhir = input('Masukkan Kota Tujuan: ')
+
+rute = list(perjalanan(graf_kota_china, tempat_awal, tempat_akhir))
+print('Jumlah Rute:', len(rute))
+print()
+if len(rute) > 0:
+    print('Rute Tercepat:', ' -> '.join(rute[0]))
+    print('Rute Terlama:', ' -> '.join(rute[-1]))
+    print('\nDaftar Rute:')
+    print_rute(rute)
+else:
+    print('Tidak ditemukan rute dari', tempat_awal, 'ke', tempat_akhir)
