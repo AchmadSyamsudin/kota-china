@@ -9,3 +9,5 @@ def perjalanan(graf, awal, akhir):
                 yield path + [next_node]
             else:
                 stack.append((next_node, path + [next_node]))
+def print_rute(rute):
+    for i, path in enumerate(rute, start=1):
