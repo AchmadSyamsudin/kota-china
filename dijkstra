@@ -1,0 +1,22 @@
+def dijkstra(graf, awal, akhir):
+    # Inisialisasi jarak ke semua node dengan infinity, kecuali node awal
+    jarak = {node: float('infinity') for node in graf}
+    jarak[awal] = 0
+    # Inisialisasi rute untuk menyimpan jalur terpendek ke setiap node
+    rute = {node: [] for node in graf}
+    rute[awal] = [awal]
+    # Set untuk menyimpan node yang sudah dikunjungi
+    visited = set()
+
+    while True:
+        # Mencari node dengan jarak terpendek yang belum dikunjungi
+        min_jarak = float('infinity')
+        min_node = None
+        for node in jarak:
+            if node not in visited and jarak[node] < min_jarak:
+                min_jarak = jarak[node]
+                min_node = node
+        
+        # Jika tidak ada node yang dapat diakses atau semua node sudah dikunjungi
+        if min_node is None:
+            break
