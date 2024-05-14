@@ -20,3 +20,27 @@ def dijkstra(graf, awal, akhir):
         # Jika tidak ada node yang dapat diakses atau semua node sudah dikunjungi
         if min_node is None:
             break
+
+        # Menandai node tersebut sebagai sudah dikunjungi
+        visited.add(min_node)
+        
+        # Memperbarui jarak untuk tetangga-tetangga dari node yang baru dikunjungi
+        for next_node, distance in graf[min_node]:
+            new_dist = jarak[min_node] + distance
+            if new_dist < jarak[next_node]:
+                jarak[next_node] = new_dist
+                rute[next_node] = rute[min_node] + [next_node]
+
+    # Mengembalikan hasil
+    if jarak[akhir] == float('infinity'):
+        return None  # Jika tidak ada rute yang ditemukan
+    else:
+        return (rute[akhir], jarak[akhir])
+
+def print_rute(path, dist):
+    print(f'Rute: {" -> ".join(path)}, Jarak: {dist} km')
+
+graf_kota_china = {
+    'Beijing': [('Tianjin', 120), ('Shijiazhuang', 283), ('Jinan', 405)],
+    'Tianjin': [('Beijing', 120), ('Shijiazhuang', 247)],
+    'Shijiazhuang': [('Beijing', 283), ('Tianjin', 247), ('Zhengzhou', 511), ('Xingtai', 109)],
