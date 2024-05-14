@@ -44,3 +44,26 @@ graf_kota_china = {
     'Beijing': [('Tianjin', 120), ('Shijiazhuang', 283), ('Jinan', 405)],
     'Tianjin': [('Beijing', 120), ('Shijiazhuang', 247)],
     'Shijiazhuang': [('Beijing', 283), ('Tianjin', 247), ('Zhengzhou', 511), ('Xingtai', 109)],
+'Jinan': [('Beijing', 405), ('Shijiazhuang', 325), ('Zhengzhou', 482), ('Qingdao', 393)],
+    'Zhengzhou': [('Shijiazhuang', 511), ('Jinan', 482), ('Wuhan', 481)],
+    'Nanjing': [('Jinan', 551), ('Hefei', 164), ('Shanghai', 301)],
+    'Qingdao': [('Jinan', 393), ('Taian', 135)],
+    'Wuhan': [('Zhengzhou', 481), ('Changsha', 350), ('Nanchang', 328)],
+    'Hefei': [('Nanjing', 164), ('Wuhan', 351)],
+    'Shanghai': [('Nanjing', 301), ('Hangzhou', 180)],
+    'Xingtai': [('Shijiazhuang', 109)],  # Tambahkan node 'Xingtai'
+    'Changsha': [('Wuhan', 350)],  # Tambahkan node 'Changsha'
+    'Nanchang': [('Wuhan', 328)],  # Tambahkan node 'Nanchang'
+    'Taian': [('Qingdao', 135)],  # Tambahkan node 'Taian'
+    'Hangzhou': [('Shanghai', 180)]  # Tambahkan node 'Hangzhou'
+}
+
+tempat_awal = input('Masukkan Kota Asal: ')
+tempat_akhir = input('Masukkan Kota Tujuan: ')
+
+result = dijkstra(graf_kota_china, tempat_awal, tempat_akhir)
+if result:
+    path, dist = result
+    print('Rute Tercepat:', ' -> '.join(path), f', Jarak: {dist} km')
+else:
+    print('Tidak ditemukan rute dari', tempat_awal, 'ke', tempat_akhir)
